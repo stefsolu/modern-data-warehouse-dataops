@@ -1,0 +1,20 @@
+{
+	"name": "powerquery",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "HRData",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> HRData",
+					"dataset": {
+						"referenceName": "HRData",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared HRData = let AdfDoc = AzureStorage.DataLakeContents(\"https://datastoresolu.dfs.core.windows.net/myfs/azure_datasets.txt\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]) in Csv;\r\nshared UserQuery = let Source = #\"HRData\" in Source;\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}

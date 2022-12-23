@@ -1,0 +1,9 @@
+{
+	"name": "mydataops-datafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fff75f31-f1df-4777-ad65-9c50aa9a7edd",
+		"tenantId": "a5331c14-6416-4bf1-a28b-41e6aa591d9d"
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"name": "dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "HRData",
+						"type": "DatasetReference"
+					},
+					"name": "vmsource"
+				},
+				{
+					"linkedService": {
+						"referenceName": "RestService",
+						"type": "LinkedServiceReference"
+					},
+					"name": "containersource"
+				}
+			],
+			"sinks": [
+				{
+					"name": "dcssink"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          itemId as integer,",
+				"          name as string,",
+				"          age as integer,",
+				"          level as integer,",
+				"          sub as string,",
+				"          gender as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> vmsource",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'rest',",
+				"     timeout: 30,",
+				"     requestInterval: 0,",
+				"     httpMethod: 'POST',",
+				"     paginationRules: ['supportRFC5988' -> 'true'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> containersource",
+				"vmsource sink(validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1) ~> dcssink"
+			]
+		}
+	}
+}
