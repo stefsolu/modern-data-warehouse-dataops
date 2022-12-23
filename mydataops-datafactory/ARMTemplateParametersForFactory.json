@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mydataops-datafactory"
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"RestService_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://datastoresolu.dfs.core.windows.net/"
+		},
+		"HttpServer_properties_typeProperties_url": {
+			"value": "api.azure.com"
+		},
+		"RestService_properties_typeProperties_url": {
+			"value": "myurl.huaweicloud.com"
+		},
+		"RestService_properties_typeProperties_userName": {
+			"value": "myname"
+		}
+	}
+}
