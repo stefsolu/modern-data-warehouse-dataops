@@ -1,16 +1,5 @@
 {
 	"name": "mydataops-datafactory",
-	"properties": {
-		"globalParameters": {
-			"env": {
-				"type": "string",
-				"value": "dev"
-			}
-		},
-		"globalConfigurations": {
-			"PipelineBillingEnabled": "false"
-		}
-	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
