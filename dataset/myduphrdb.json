@@ -1,0 +1,19 @@
+{
+	"name": "myduphrdb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "myfs"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
